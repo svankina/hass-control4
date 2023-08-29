@@ -52,7 +52,7 @@ from .director_utils import director_get_entry_variables
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORMS = [Platform.LIGHT, Platform.ALARM_CONTROL_PANEL, Platform.BINARY_SENSOR]
+PLATFORMS = [Platform.LIGHT, Platform.ALARM_CONTROL_PANEL, Platform.BINARY_SENSOR, Platform.COVER]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
