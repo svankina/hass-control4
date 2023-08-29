@@ -5,9 +5,7 @@ import logging
 
 from pyControl4.blind import C4Blind
 
-from homeassistant.components.cover import (
-CoverEntity
-)
+from homeassistant.components.cover import CoverEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
