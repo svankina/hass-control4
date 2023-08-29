@@ -76,8 +76,6 @@ async def async_setup_entry(
 class Control4Cover(Control4Entity, CoverEntity):
     """Control4 cover entity."""
 
-    def __init__(self,)
-
     def create_api_object(self):
         """Create a pyControl4 device object.
 
