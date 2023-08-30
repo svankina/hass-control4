@@ -76,6 +76,7 @@ async def async_setup_entry(
 class Control4Cover(Control4Entity, CoverEntity):
     """Control4 cover entity."""
 
+
     def create_api_object(self):
         """Create a pyControl4 device object.
 
@@ -87,7 +88,8 @@ class Control4Cover(Control4Entity, CoverEntity):
     def is_closed(self):
         """Return whether the cover is open or closed."""
         #TODO: Implement this properly.
-        return True
+        if "Open" in self.extra_state_attributes:
+            return self.extra_state_attributes['Open'] != 0
 
     async def async_open_cover(self, **kwargs) -> None:
         """Open the cover"""
@@ -100,3 +102,4 @@ class Control4Cover(Control4Entity, CoverEntity):
         c4_cover = self.create_api_object()
         await c4_cover.close()
         await self.async_update_ha_state()
+
