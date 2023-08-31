@@ -94,10 +94,10 @@ class Control4Cover(Control4Entity, CoverEntity):
         """Open the cover"""
         c4_cover = self.create_api_object()
         await c4_cover.open()
-        self.async_write_ha_state()
+        await self.async_update_ha_state(force_refresh=True)
 
     async def async_close(self, **kwargs) -> None:
         """Close the cover"""
         c4_cover = self.create_api_object()
         await c4_cover.close()
-        self.async_write_ha_state()
+        await self.async_update_ha_state(force_refresh=True)
