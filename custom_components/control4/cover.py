@@ -18,6 +18,7 @@ _LOGGER = logging.getLogger(__name__)
 
 CONTROL4_CATEGORY = "blinds_shades"
 
+
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
@@ -69,13 +70,12 @@ async def async_setup_entry(
                 item_area,
                 item_attributes,
             )
-
         )
     async_add_entities(entity_list, True)
 
+
 class Control4Cover(Control4Entity, CoverEntity):
     """Control4 cover entity."""
-
 
     def create_api_object(self):
         """Create a pyControl4 device object.
@@ -87,19 +87,17 @@ class Control4Cover(Control4Entity, CoverEntity):
     @property
     def is_closed(self):
         """Return whether the cover is open or closed."""
-        #TODO: Implement this properly.
         if "Open" in self.extra_state_attributes:
-            return self.extra_state_attributes['Open'] != 0
+            return self.extra_state_attributes["Open"] != 0
 
     async def async_open_cover(self, **kwargs) -> None:
         """Open the cover"""
         c4_cover = self.create_api_object()
         await c4_cover.open()
-        await self.async_update_ha_state()
+        await self.async_write_ha_state()
 
     async def async_close(self, **kwargs) -> None:
         """Close the cover"""
         c4_cover = self.create_api_object()
         await c4_cover.close()
-        await self.async_update_ha_state()
-
+        await self.async_write_ha_state()
